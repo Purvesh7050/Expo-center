@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<title>TechGig</title>
+<link rel="icon" href="https://s3-ap-south-1.amazonaws.com/media.dreamcast.in/events-techgig-nov-2022/Setup/1668589809-6374a8f134c73.png" sizes="16x16" type="image/png"/>
+<meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
+    <style>
+    :root {
+        --main-font: 'Adobe Clean';
+        --head-font: 'Adobe Clean';
+        --regular: 400;
+        --bold: 700;
+        --white: #FFFFFF;
+        --light: #F1F3F4;
+        --dark: #000000;
+        --primary-color: #d7263d;
+        --secondary-color: #4a4548;
+        --border-color: #dee2e6;
+        --body: 14px;
+        --small: 11px;
+        --shadow: 0px 3px 6px #00000029;
+        --radius: 6px;
+        --transition: all .3s ease;
+    }
+
+    input[name="password"] {
+        /* -webkit-text-security: disc;
+        font-family: "text-security-disc"; */
+    }
+</style>
+    <link rel="stylesheet" href="https://events.techgig.com/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://events.techgig.com/css/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="https://events.techgig.com/css/reset.css"/>
+    <link rel="stylesheet" href="https://events.techgig.com/css/login.css"/>
+    
+    <script src="https://events.techgig.com/js/static/bootstrap.bundle.min.js"></script>
+<script src="https://events.techgig.com/js/static/jquery-3.4.1.min.js"></script>
+<script src="https://events.techgig.com/js/static/jquery.fancybox.min.js"></script>
+<script src="https://events.techgig.com/js/static/vue-slick-carousel.umd.js"></script>
+<script src="https://events.techgig.com/js/static/moment.js"></script>
+<script src="https://events.techgig.com/js/static/moment-timezone.min.js"></script>
+<script src="https://events.techgig.com/js/static/moment-timezone-with-data.min.js"></script>
+<script src="https://events.techgig.com/js/static/jszip.min.js"></script>
+<script src="https://events.techgig.com/js/static/FileSaver.min.js"></script>
+<script src="https://events.techgig.com/js/static/vue@2.dev.js"></script>
+<script src="https://events.techgig.com/js/static/vue-router.min.js"></script>
+<script src="https://events.techgig.com/js/static/vee-validate.js"></script>
+<script src="https://events.techgig.com/js/static/vue-pagination.min.js"></script>
+<script src="https://events.techgig.com/js/static/lottie-player.js"></script>
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+<script type=module src="https://whereby.dev/embed/whereby-embed.js"></script>    <script>
+    const BASE_URL = `https://events.techgig.com/`;const CSS_VERSION = `1674036756`;const JS_VERSION = `1674036756`;const DC_TIMESTAMP ='2023-01-18T10:12:36Z';const DC_ROOT ='';</script>    <script src="https://events.techgig.com/js/core/dc.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/core/dc.inline.loader.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/core/dc.loader.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/core/dc.alert.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/core/dc.dialog.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/core/dc.toast.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/core/dc.fetch.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/core/dc.fancybox.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/core/dc.countdown.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/core/dc.clock.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/services/dc.window.tab.event.js?v=1674036756"></script>
+<script src="https://events.techgig.com/js/services/dc.window.tab.service.js?v=1674036756"></script>
+    <script>
+        Vue.prototype.$dc = Object.freeze({
+        baseURL: BASE_URL,
+        user: (typeof DC_USER !== 'undefined') ? DC_USER : {},
+        timestamp: DC_TIMESTAMP
+    });
+    const dict = {
+        custom: {
+            verification_code: {
+                digits: 'Please enter the correct OTP.'
+            },
+            consent: {
+                required: 'Please fill in the checkbox.'
+            },
+            avatar: {
+                ext: 'The file type must be image/jpg, image/jpeg, image/png, video/mp4 only.'
+            },
+        }
+    };
+
+    VeeValidate.Validator.localize('en', dict);
+    VeeValidate.Validator.extend('multiple',
+        {
+            getMessage(field, args) {
+                const min = args[0];
+                const max = args[1];
+                return (max == 1) ? `The field is required.` : `You can choose only ${max} options.`;
+            },
+            validate(value, args) {
+                const min = args[0];
+                const max = args[1];
+                return !(value.length < min || value.length > max);
+            }
+        }
+    );
+    Vue.use(VeeValidate, {inject: true});
+    Vue.use(DcWindowTabEvent);
+    
+    let EventBus = new Vue();
+    Vue.filter('utcToTimezone', function (date, timezone = DC_USER.timezone, type = "ddd, MMM Do YYYY, h:mm A") {
+        return moment.utc(date).tz(timezone).format(type);
+    });
+    const dcOfflineAlert = new DcAlert;
+    window.addEventListener("offline", (event) => {
+        dcOfflineAlert.setTypeWarning().setHeading('OFFLINE').show("Please check your internet connection.");
+    });
+    window.addEventListener("online", (event) => {
+        dcOfflineAlert.hide();
+    });
+</script></head>
+<body>
+<div class="vh-100 d-flex align-items-center justify-content-center">
+    <div class="text-center">
+        <h2 class="mb-3">404! Page Not Found.</h2>
+        <a class="btn btn-fill" href="/">Go to Home</a>
+    </div>
+</div><script>
+    let loginFormElement = document.querySelector("form");
+    if (loginFormElement) {
+        loginFormElement.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+    /* back button issue*/
+    window.addEventListener("pageshow", function (event) {
+        if (event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) {
+            window.location.reload();
+        }
+    });
+</script>
+</body>
+</html>

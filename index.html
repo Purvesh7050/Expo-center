@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+       
+        #myVideo1{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100%;
+            object-fit: fill;
+        }
+
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100%;
+            object-fit: fill;
+            visibility: hidden;
+          }
+
+          
+          
+          /* Style the button used to pause/play the video */
+          
+    </style>
+
+</head>
+<body>
+    
+    <video autoplay muted loop id="myVideo1">
+        <source src="./main3.mp4" type="video/mp4">
+      </video>
+
+    <video muted id="myVideo">
+        <source src="./main4.mp4" type="video/mp4">
+      </video>
+
+      <!-- <button style="position: fixed; left: 40%; bottom:20%;" class="btn"><i class="fa-regular fa-circle"></i></i></button> -->
+
+      <!-- <button style="position: fixed; left:45%; bottom:20%;">  -->
+    <!-- </button> -->
+
+   
+
+      <div class="content">
+        <!-- <h1>Heading</h1>
+        <p>Lorem ipsum...</p> -->
+        <!-- Use a button to pause/play the video with JavaScript -->
+        <button id="myBtn" onclick="myFunction()"> <img src="./triangle.png" style="cursor: pointer; position:fixed; right:48.5%; top:62%; z-index:9999; width:20px; height:20px " alt=""></button> <!--pause-->
+      </div>
+
+      <script>
+        // Get the video
+        var video = document.getElementById("myVideo");
+        
+        // Get the button
+        var btn = document.getElementById("myBtn");
+        
+        // Pause and play the video, and change the button text
+       async function myFunction() {
+        /*  if (video.paused) {
+            video.style.visibility="visible";
+            video.play();
+            btn.innerHTML = "Pause";
+          } else {
+            
+            video.pause();
+            btn.innerHTML = "Play";
+          } */
+          video.style.visibility="visible";
+         await video.play();
+         btn.style.visibility="hidden";
+         await video.addEventListener('ended',function(){
+            window.location = './hehe.html';
+        });
+        }
+        </script>
+
+           <!-- window.location = 'http://www.nirantdryfruits.com'; -->
+
+    
+</body>
+</html>

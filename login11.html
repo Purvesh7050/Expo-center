@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from events.techgig.com/login by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 Jan 2023 10:12:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<title>TechGig</title>
+<link rel="icon" href="../s3-ap-south-1.amazonaws.com/media.dreamcast.in/events-techgig-nov-2022/Setup/1668589809-6374a8f134c73.png" sizes="16x16" type="image/png"/>
+<meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
+    <style>
+    :root {
+        --main-font: 'Adobe Clean';
+        --head-font: 'Adobe Clean';
+        --regular: 400;
+        --bold: 700;
+        --white: #FFFFFF;
+        --light: #F1F3F4;
+        --dark: #000000;
+        --primary-color: #d7263d;
+        --secondary-color: #4a4548;
+        --border-color: #dee2e6;
+        --body: 14px;
+        --small: 11px;
+        --shadow: 0px 3px 6px #00000029;
+        --radius: 6px;
+        --transition: all .3s ease;
+    }
+
+    input[name="password"] {
+        /* -webkit-text-security: disc;
+        font-family: "text-security-disc"; */
+    }
+</style>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/login.css"/>
+    
+    <script src="js/static/bootstrap.bundle.min.js"></script>
+<script src="js/static/jquery-3.4.1.min.js"></script>
+<script src="js/static/jquery.fancybox.min.js"></script>
+<script src="js/static/vue-slick-carousel.umd.js"></script>
+<script src="js/static/moment.js"></script>
+<script src="js/static/moment-timezone.min.js"></script>
+<script src="js/static/moment-timezone-with-data.min.js"></script>
+<script src="js/static/jszip.min.js"></script>
+<script src="js/static/FileSaver.min.js"></script>
+<script src="js/static/vue%402.dev.js"></script>
+<script src="js/static/vue-router.min.js"></script>
+<script src="js/static/vee-validate.js"></script>
+<script src="js/static/vue-pagination.min.js"></script>
+<script src="js/static/lottie-player.js"></script>
+<script src="../player.vimeo.com/api/player.js"></script>
+<script src="../www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+<script src="../www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+<script type=module src="../whereby.dev/embed/whereby-embed.js"></script>    <script>
+    const BASE_URL = `https://events.techgig.com/`;const CSS_VERSION = `1674036738`;const JS_VERSION = `1674036738`;const DC_TIMESTAMP ='2023-01-18T10:12:18Z';const DC_ROOT ='';</script>    <script src="js/core/dc6049.js?v=1674036738"></script>
+<script src="js/core/dc.inline.loader6049.js?v=1674036738"></script>
+<script src="js/core/dc.loader6049.js?v=1674036738"></script>
+<script src="js/core/dc.alert6049.js?v=1674036738"></script>
+<script src="js/core/dc.dialog6049.js?v=1674036738"></script>
+<script src="js/core/dc.toast6049.js?v=1674036738"></script>
+<script src="js/core/dc.fetch6049.js?v=1674036738"></script>
+<script src="js/core/dc.fancybox6049.js?v=1674036738"></script>
+<script src="js/core/dc.countdown6049.js?v=1674036738"></script>
+<script src="js/core/dc.clock6049.js?v=1674036738"></script>
+<script src="js/services/dc.window.tab.event6049.js?v=1674036738"></script>
+<script src="js/services/dc.window.tab.service6049.js?v=1674036738"></script>
+    <script>
+        Vue.prototype.$dc = Object.freeze({
+        baseURL: BASE_URL,
+        user: (typeof DC_USER !== 'undefined') ? DC_USER : {},
+        timestamp: DC_TIMESTAMP
+    });
+    const dict = {
+        custom: {
+            verification_code: {
+                digits: 'Please enter the correct OTP.'
+            },
+            consent: {
+                required: 'Please fill in the checkbox.'
+            },
+            avatar: {
+                ext: 'The file type must be image/jpg, image/jpeg, image/png, video/mp4 only.'
+            },
+        }
+    };
+
+    VeeValidate.Validator.localize('en', dict);
+    VeeValidate.Validator.extend('multiple',
+        {
+            getMessage(field, args) {
+                const min = args[0];
+                const max = args[1];
+                return (max == 1) ? `The field is required.` : `You can choose only ${max} options.`;
+            },
+            validate(value, args) {
+                const min = args[0];
+                const max = args[1];
+                return !(value.length < min || value.length > max);
+            }
+        }
+    );
+    Vue.use(VeeValidate, {inject: true});
+    Vue.use(DcWindowTabEvent);
+    
+    let EventBus = new Vue();
+    Vue.filter('utcToTimezone', function (date, timezone = DC_USER.timezone, type = "ddd, MMM Do YYYY, h:mm A") {
+        return moment.utc(date).tz(timezone).format(type);
+    });
+    const dcOfflineAlert = new DcAlert;
+    window.addEventListener("offline", (event) => {
+        dcOfflineAlert.setTypeWarning().setHeading('OFFLINE').show("Please check your internet connection.");
+    });
+    window.addEventListener("online", (event) => {
+        dcOfflineAlert.hide();
+    });
+</script></head>
+<body>
+<section class="main" id="App" v-cloak>
+    <div class="row g-0">
+        <div class="col-md-12 col-lg-4 text-center">
+            <div class="p-3 vh-md-100 d-flex align-items-center">
+                <img class="left_txt" src="public/assets/img/landing/left_text6049.png?v=1674036738" alt="" title="">
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-4 vh-md-100 overflow-y-auto">
+            <div class="p-3 pt-0 pt-md-3 d-flex flex-column h-100">
+                <div class="w-100 m-auto">
+                    <h1 class="mb-4 heading">Login</h1>
+                    <form @submit.prevent="onSubmit" novalidate>
+                        <div class="row g-3 m-0">
+                            <div class="bg_frm">
+                                <div class="col-sm-12 col-md-12 col-lg-12 form-group" v-if="formFields.hasOwnProperty('email')===true">
+                                    <label class="form-label required">Email ID</label>
+                                    <input
+                                        v-validate="'required|email|max:100'"
+                                        data-vv-as="email"
+                                        v-model.trim="formFields.email"
+                                        name="email"
+                                        id="email"
+                                        placeholder="Email Address"
+                                        class="form-control"/>
+                                    <div v-if="errors.has('email')" class='text-danger'>{{ errors.first('email') }}</div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 form-group" v-if="formFields.hasOwnProperty('mobile')===true">
+                                    <label class="form-label required">Mobile</label>
+                                    <input
+                                        v-validate="'required|numeric'"
+                                        data-vv-as="mobile"
+                                        v-model.trim="formFields.mobile"
+                                        name="mobile"
+                                        id="mobile"
+                                        placeholder="Mobile"
+                                        class="form-control"/>
+                                    <div v-if="errors.has('mobile')" class='text-danger'>{{ errors.first('mobile') }}</div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 form-group" v-if="formFields.hasOwnProperty('username')===true">
+                                    <label class="form-label required">Username/Employee ID</label>
+                                    <input
+                                        v-validate="'required'"
+                                        data-vv-as="username"
+                                        v-model.trim="formFields.username"
+                                        name="username"
+                                        id="username"
+                                        placeholder="Employee ID"
+                                        class="form-control"/>
+                                    <div v-if="errors.has('username')" class='text-danger'>{{ errors.first('username') }}</div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 form-group" v-if="formFields.hasOwnProperty('password')===true">
+                                    <label class="form-label required">Password</label>
+                                    <input
+                                        v-validate="'required'"
+                                        data-vv-as="password|max:4|max:50"
+                                        v-model="formFields.password"
+                                        name="password"
+                                        type="password"
+                                        id="password"
+                                        placeholder="Password"
+                                        class="form-control"/>
+                                    <div v-if="errors.has('password')" class='text-danger'>{{ errors.first('password') }}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 d-flex align-items-center p-0">
+                               <button type="submit" class="myBtn" :disabled="errors.any()">Submit</button>
+                                                                   <p class="ms-auto text-white">
+                                         <a class="text-decoration-underline" href="signup.html" target='_self'>Not Registered? Click Here</a></p>
+                                                             
+                            </div>
+                                                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-4 text-center">
+            <div class="p-3 vh-md-100 d-flex align-items-center">
+                <img class="left_txt" src="public/assets/img/landing/right_face6049.png?v=1674036738" alt="" title="">
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    new Vue({
+        el: '#App',
+        data() {
+            return {
+                formFields: {
+                    email: '',
+                    mobile: '',
+                    username: '',
+                    password: '',
+                }
+            }
+        },
+        beforeMount() {
+            this.$delete(this.formFields,"mobile");this.$delete(this.formFields,"username");this.$delete(this.formFields,"password");        },
+        mounted() {
+
+        },
+        methods: {
+            onSubmit() {
+				localStorage.removeItem('exterior');
+                this.formFields.email = this.formFields.email.replace(/ /g, '');
+                this.$validator.validateAll().then((isValid) => {
+                    if (isValid) {
+                        let objDcLoader = new DcLoader;
+                        objDcLoader.show("Authenticating...");
+                        let dcFetch = new DcFetch;
+                        dcFetch.setUrl(`${BASE_URL}users/allowMe`)
+                            .setPostData(this.formFields)
+                            .onSuccess((response) => {
+                                objDcLoader.hide();
+                                if (dcFetch.isValidResponse(response)) {
+                                    if (response.head.status == false) {
+                                        if (response.head.code == 412 && response.body && typeof response.body == "object") {
+                                            let index = 0;
+                                            for (let field in response.body) {
+                                                this.errors.items.push({
+                                                    id: (index).toString(),
+                                                    vmId: this.errors.vmId,
+                                                    field: field,
+                                                    msg: response.body[field],
+                                                    rule: "required",
+                                                });
+                                                index++;
+                                            }
+                                        } else {
+                                            const dcAlert = new DcAlert;
+                                            dcAlert.setTypeDanger().show(response.head.message);
+                                        }
+                                    } else {
+                                        objDcLoader.show("Redirecting...");
+                                        window.location.href = response.body.redirect;
+                                    }
+                                }
+                            })
+                            .onFailure((response) => {
+                                objDcLoader.hide();
+                                dcFetch.handleFailure(response);
+                            })
+                            .doSynchronousPostRequest();
+                    }
+                });
+            }
+        },
+    });
+</script>
+<script>
+    let loginFormElement = document.querySelector("form");
+    if (loginFormElement) {
+        loginFormElement.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+    /* back button issue*/
+    window.addEventListener("pageshow", function (event) {
+        if (event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) {
+            window.location.reload();
+        }
+    });
+</script>
+</body>
+
+<!-- Mirrored from events.techgig.com/login by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 Jan 2023 10:12:28 GMT -->
+</html>
